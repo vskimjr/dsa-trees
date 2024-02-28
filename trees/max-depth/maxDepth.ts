@@ -6,6 +6,15 @@ import { TreeNodeNum } from "../common/tree";
  **/
 
 function maxDepth(node: TreeNodeNum | null): number {
+
+  // count starts at 1
+  // we then look at root's children
+  // see if they have children,
+  // ... if so, see if the children have children ... et
+
+  // somehow we are keeping count as we go "deep" into the stack
+
+
   return 42;
 }
 

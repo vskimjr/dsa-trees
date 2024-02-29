@@ -1,3 +1,4 @@
+import { maxDepth } from "../../trees/max-depth/maxDepth";
 import { BNodeNum } from "../common/bintree";
 
 /** Get minimum depth from node.
@@ -6,7 +7,19 @@ import { BNodeNum } from "../common/bintree";
  **/
 
 function minDepth(node: BNodeNum): number {
-  return 42;
+
+  let minDepthLength = 0;
+
+  if (!node.lnode || !node.rnode) return 0;
+
+  if (node.lnode) {
+    let currDepth = minDepth(node.lnode)
+    minDepthLength = Math.min(currDepth, minDepthLength)
+  }
+
+  return minDepthLength + 1;
+
+
 }
 
 export { minDepth };

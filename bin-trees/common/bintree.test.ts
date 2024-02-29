@@ -4,7 +4,7 @@ import { expect, it } from "vitest";
 //              6
 //            /   \
 //           5     5
-//
+//          
 const smallTree = new BinTreeNum(
     new BNodeNum(6, new BNodeNum(5), new BNodeNum(5)));
 

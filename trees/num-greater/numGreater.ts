@@ -9,7 +9,7 @@ function numGreater(node: TreeNodeNum, lowerBound: number): number {
 
   if (node.val > lowerBound) numGreaterCount ++;
 
-  for (let child of node.children){
+  for (const child of node.children){
     numGreaterCount += numGreater(child, lowerBound)
   }
 

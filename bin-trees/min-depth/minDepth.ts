@@ -8,17 +8,18 @@ import { BNodeNum } from "../common/bintree";
 
 function minDepth(node: BNodeNum): number {
 
-  let minDepthLength = 0;
+  if (!node.lnode && !node.rnode) return 1;
 
-  if (!node.lnode || !node.rnode) return 0;
+  if (node!.lnode) minDepth(node.lnode!)
+  if (node.rnode) minDepth(node.rnode!)
 
-  if (node.lnode) {
-    let currDepth = minDepth(node.lnode)
-    minDepthLength = Math.min(currDepth, minDepthLength)
-  }
+  let minDepthLengthRight = minDepth(node.rnode!); //1
+  let minDepthLengthLeft = minDepth(node.lnode!); //1
 
-  return minDepthLength + 1;
+  // console.log("mindepthLeft, mindepthRight", minDepthLengthLeft +1, minDepthLengthRight + 1)
 
+  //+1 accounts for node
+  return Math.min(minDepthLengthLeft, minDepthLengthRight) + 1;
 
 }
 

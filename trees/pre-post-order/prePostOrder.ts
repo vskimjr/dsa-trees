@@ -4,7 +4,17 @@ import { BNodeNum } from "../common/binary-search-tree";
  * Returns an array of visited nodes. */
 
 function preOrder(node: BNodeNum | null): number[] {
-  return [42];
+  let result : number[] = [];
+
+  if (node === null) return [];
+
+  result.push(node.val)
+
+  for (const child of node.children){
+    result.push(...preOrder(child));
+  }
+
+  return result;
 }
 
 
@@ -12,7 +22,17 @@ function preOrder(node: BNodeNum | null): number[] {
  * Returns an array of visited nodes. */
 
 function postOrder(node: BNodeNum | null): number[] {
-  return [42];
+  let result : number[] = [];
+
+  if (node === null) return [];
+
+  for (const child of node.children){
+    result.push(...postOrder(child));
+  }
+
+  result.push(node.val)
+
+  return result;
 }
 
 export { preOrder, postOrder };

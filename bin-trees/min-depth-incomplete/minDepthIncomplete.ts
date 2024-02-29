@@ -6,11 +6,18 @@ import { BNodeNum } from "../common/bintree";
  */
 
 function minDepthToIncomplete(node: BNodeNum): number {
-  if (!node.lnode || !node.rnode) return 0;
+  //account for the incomplete node
+  if (!node.lnode || !node.rnode) return 1;
+  //6 //5 //3 //1
+  //6 //5 //0
 
-  let minDepthLength = 0;
+  let minDepthLengthRight = minDepthToIncomplete(node.rnode); //1
+  let minDepthLengthLeft = minDepthToIncomplete(node.lnode); //1
 
-  return Math.min(minDepthToIncomplete(node.lnode), minDepthToIncomplete(node.rnode)) +1
+  console.log("mindepthLeft, mindepthRight", minDepthLengthLeft +1, minDepthLengthRight + 1)
+  //+1 accounts for the root node
+  return Math.min(minDepthLengthLeft, minDepthLengthRight) + 1;
+
 
   // if (node.lnode) {
   //   let currDepth = minDepthToIncomplete(node.lnode)

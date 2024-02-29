@@ -10,16 +10,23 @@ function minDepth(node: BNodeNum): number {
 
   if (!node.lnode && !node.rnode) return 1;
 
-  if (node!.lnode) minDepth(node.lnode!)
-  if (node.rnode) minDepth(node.rnode!)
+ let minDepthLengthRight= 0;
+ let minDepthLengthLeft= 0;
 
-  let minDepthLengthRight = minDepth(node.rnode!); //1
-  let minDepthLengthLeft = minDepth(node.lnode!); //1
+  if (node!.lnode){
+    minDepthLengthLeft = minDepth(node.lnode!) ;
+  }else{
+    minDepthLengthLeft = Infinity;
+  }
 
-  // console.log("mindepthLeft, mindepthRight", minDepthLengthLeft +1, minDepthLengthRight + 1)
+  if (node.rnode){
+    minDepthLengthRight = minDepth(node.rnode!);
+  }else{
+    minDepthLengthRight = Infinity;
+  }
 
   //+1 accounts for node
-  return Math.min(minDepthLengthLeft, minDepthLengthRight) + 1;
+  return Math.min(minDepthLengthLeft, minDepthLengthRight) + 1;  //2 //
 
 }
 
